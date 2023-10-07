@@ -1,6 +1,6 @@
 package com.example.mferreiradb.products.dtos;
 
-public class ProductRequest {
+public class ProductRequestDTO {
     public String name;
     public Double price;
 }

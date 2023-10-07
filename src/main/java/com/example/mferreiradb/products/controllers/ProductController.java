@@ -1,7 +1,7 @@
 package com.example.mferreiradb.products.controllers;
 
 import com.example.mferreiradb.products.entities.Product;
-import com.example.mferreiradb.products.dtos.ProductRequest;
+import com.example.mferreiradb.products.dtos.ProductRequestDTO;
 import com.example.mferreiradb.products.useCases.CreateProductUseCase;
 import com.example.mferreiradb.products.useCases.GetAllProductsUseCase;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createProduct(@RequestBody ProductRequest body) {
+    public ResponseEntity<Void> createProduct(@RequestBody ProductRequestDTO body) {
         this._createCreateProductUseCase.execute(body.name, body.price);
         return ResponseEntity.status(201).build();
     };
