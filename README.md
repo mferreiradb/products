@@ -21,4 +21,4 @@ Esta é uma API simples de CRUD de produtos em Java construída com Spring Boot 
 1. Clone o repositório para sua máquina local:
 
    ```shell
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/mferreiradb/products.git
