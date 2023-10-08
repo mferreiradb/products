@@ -1,6 +1,6 @@
 package com.example.mferreiradb.products.entities;
 public class Product {
-    private String _id;
+    private final String _id;
     private String _name;
     private Double _price;
 
@@ -12,10 +12,6 @@ public class Product {
 
     public String get_id() {
         return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
     }
 
     public String get_name() {
