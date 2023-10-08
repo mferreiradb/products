@@ -2,10 +2,7 @@ package com.example.mferreiradb.products.controllers;
 
 import com.example.mferreiradb.products.entities.Product;
 import com.example.mferreiradb.products.dtos.ProductRequestDTO;
-import com.example.mferreiradb.products.useCases.CreateProductUseCase;
-import com.example.mferreiradb.products.useCases.DeleteProductUseCase;
-import com.example.mferreiradb.products.useCases.GetAllProductsUseCase;
-import com.example.mferreiradb.products.useCases.UpdateProductUseCase;
+import com.example.mferreiradb.products.useCases.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +15,20 @@ public class ProductController {
     private final CreateProductUseCase _createCreateProductUseCase;
     private final GetAllProductsUseCase _getAllProductsUseCase;
     private final DeleteProductUseCase _deleteProductUseCase;
-
     private final UpdateProductUseCase _updateProductUseCase;
+    private final GetOneProductUseCase _getOneProductUseCase;
     public ProductController(
             final CreateProductUseCase createProductUseCase,
             final GetAllProductsUseCase getAllProductsUseCase,
             final DeleteProductUseCase deleteProductUseCase,
-            final UpdateProductUseCase updateProductUseCase
+            final UpdateProductUseCase updateProductUseCase,
+            final GetOneProductUseCase getOneProductUseCase
     ) {
         this._createCreateProductUseCase = createProductUseCase;
         this._getAllProductsUseCase = getAllProductsUseCase;
         this._deleteProductUseCase = deleteProductUseCase;
         this._updateProductUseCase = updateProductUseCase;
+        this._getOneProductUseCase = getOneProductUseCase;
     }
 
     @PostMapping
@@ -42,6 +41,9 @@ public class ProductController {
     public List<Product> getProducts() {
         return this._getAllProductsUseCase.execute();
     }
+
+    @GetMapping(value = "/{id}")
+    public Product getOneProduct(@PathVariable String id) { return this._getOneProductUseCase.execute(id); }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable String id) {
