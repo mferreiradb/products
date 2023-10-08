@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public class ProductsRepository {
-    private List<Product> _products;
+    private final List<Product> _products;
 
     public ProductsRepository() {
         this._products = new ArrayList<>();
@@ -24,24 +24,7 @@ public class ProductsRepository {
         this._products.add(product);
     }
 
-    private Optional<Product> getById(String id) {
-        return this._products.stream().filter(product -> product.get_id().equals(id)).findFirst();
-    }
+    public Optional<Product> getById(String id) { return this._products.stream().filter(product -> product.get_id().equals(id)).findFirst(); }
 
-    public void deleteById(String id) {
-        Optional<Product> productToRemove = this.getById(id);
-
-        if (productToRemove.isPresent()) {
-            Product product = productToRemove.get(); // Obtém o objeto Product do Optional
-            int index = this._products.indexOf(product);
-
-            if (index != -1) {
-                this._products.remove(index); // Remove o produto da lista
-            } else {
-                System.out.println("Produto não encontrado na lista.");
-            }
-        } else {
-            System.out.println("Produto não encontrado.");
-        }
-    }
+    public void delete(int index) { this._products.remove(index); }
 }
