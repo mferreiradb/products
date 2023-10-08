@@ -5,6 +5,7 @@ import com.example.mferreiradb.products.dtos.ProductRequestDTO;
 import com.example.mferreiradb.products.useCases.CreateProductUseCase;
 import com.example.mferreiradb.products.useCases.DeleteProductUseCase;
 import com.example.mferreiradb.products.useCases.GetAllProductsUseCase;
+import com.example.mferreiradb.products.useCases.UpdateProductUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,19 +17,26 @@ public class ProductController {
 
     private final CreateProductUseCase _createCreateProductUseCase;
     private final GetAllProductsUseCase _getAllProductsUseCase;
-
     private final DeleteProductUseCase _deleteProductUseCase;
-    public ProductController(final CreateProductUseCase createProductUseCase, final GetAllProductsUseCase getAllProductsUseCase, final DeleteProductUseCase deleteProductUseCase) {
+
+    private final UpdateProductUseCase _updateProductUseCase;
+    public ProductController(
+            final CreateProductUseCase createProductUseCase,
+            final GetAllProductsUseCase getAllProductsUseCase,
+            final DeleteProductUseCase deleteProductUseCase,
+            final UpdateProductUseCase updateProductUseCase
+    ) {
         this._createCreateProductUseCase = createProductUseCase;
         this._getAllProductsUseCase = getAllProductsUseCase;
         this._deleteProductUseCase = deleteProductUseCase;
+        this._updateProductUseCase = updateProductUseCase;
     }
 
     @PostMapping
     public ResponseEntity<Void> createProduct(@RequestBody ProductRequestDTO body) {
         this._createCreateProductUseCase.execute(body.name, body.price);
         return ResponseEntity.status(201).build();
-    };
+    }
 
     @GetMapping
     public List<Product> getProducts() {
@@ -40,5 +48,12 @@ public class ProductController {
         this._deleteProductUseCase.execute(id);
 
         return ResponseEntity.status(204).build();
-    };
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Void> updateProduct(@PathVariable String id, @RequestBody ProductRequestDTO body) {
+        this._updateProductUseCase.execute(id, body.name, body.price);
+
+        return ResponseEntity.status(204).build();
+    }
 }
