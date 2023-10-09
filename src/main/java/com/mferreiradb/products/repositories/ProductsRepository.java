@@ -1,6 +1,6 @@
-package com.example.mferreiradb.products.repositories;
+package com.mferreiradb.products.repositories;
 
-import com.example.mferreiradb.products.entities.Product;
+import com.mferreiradb.products.entities.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

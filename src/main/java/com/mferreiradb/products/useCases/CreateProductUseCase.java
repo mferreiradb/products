@@ -1,7 +1,7 @@
-package com.example.mferreiradb.products.useCases;
+package com.mferreiradb.products.useCases;
 
-import com.example.mferreiradb.products.entities.Product;
-import com.example.mferreiradb.products.repositories.ProductsRepository;
+import com.mferreiradb.products.entities.Product;
+import com.mferreiradb.products.repositories.ProductsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
@@ -18,5 +18,5 @@ public class CreateProductUseCase {
         String id = UUID.randomUUID().toString();
         Product product = new Product(id, name, price);
         this._productsRepository.create(product);
-    };
+    }
 }

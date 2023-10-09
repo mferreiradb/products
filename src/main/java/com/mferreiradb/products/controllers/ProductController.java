@@ -1,8 +1,8 @@
-package com.example.mferreiradb.products.controllers;
+package com.mferreiradb.products.controllers;
 
-import com.example.mferreiradb.products.entities.Product;
-import com.example.mferreiradb.products.dtos.ProductRequestDTO;
-import com.example.mferreiradb.products.useCases.*;
+import com.mferreiradb.products.entities.Product;
+import com.mferreiradb.products.dtos.ProductRequestDTO;
+import com.mferreiradb.products.useCases.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

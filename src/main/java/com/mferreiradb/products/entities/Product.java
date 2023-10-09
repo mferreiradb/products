@@ -1,4 +1,4 @@
-package com.example.mferreiradb.products.entities;
+package com.mferreiradb.products.entities;
 public class Product {
     private final String _id;
     private String _name;
